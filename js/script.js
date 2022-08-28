@@ -89,7 +89,7 @@ ancientsСontainer.addEventListener('click', (event) => {
 
 //set background-image to deckCard
 const deckCard = document.querySelector('.deck-card');
-deckCard.style.backgroundImage = "url('./../assets/mythicCardBackground.png')";
+deckCard.style.backgroundImage = "url('./assets/mythicCardBackground.png')";
 
 //-----------------------------WRITE ALGORITHM FOR EVERY LEVEL---------------------------
 
