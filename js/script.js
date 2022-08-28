@@ -489,3 +489,35 @@ const applyFilterForVeryHard = () => {
     return resultArrayOfCards;
 }
 
+
+//-----------------------WHEN WE CLICK ON ANY DIFFICULTY
+//when we clcik on any difficulty
+difficultyContainer.addEventListener('click', (event) => {
+    arrayOfDifficulties.forEach(item => {
+        item.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    const id = event.target.dataset.id;
+
+    if (id === 'very easy') {
+        resultArrayWithLevel = applyFilterForVeryEasy();
+    }
+    else if (id === 'easy') {
+        resultArrayWithLevel = applyFilterForEasy();
+    }
+    else if (id === 'normal') {
+        resultArrayWithLevel = applyFilterForNormal();
+    }
+    else if (id === 'hard') {
+        resultArrayWithLevel = applyFilterForHard();
+    }
+    else if (id === 'very hard') {
+        resultArrayWithLevel = applyFilterForVeryHard();
+    }
+
+    buttonContainer.classList.remove('hidden');
+    deckContainer.classList.add('hidden');
+    return resultArrayWithLevel;
+});
+
+
