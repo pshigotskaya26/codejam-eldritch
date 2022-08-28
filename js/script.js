@@ -641,7 +641,7 @@ buttonDeck.addEventListener('click', function(event) {
     baseCount = 0;
     countOfClicks = baseCount;
     
-    deckCard.style.backgroundImage = "url('./../assets/mythicCardBackground.png')";
+    deckCard.style.backgroundImage = "url('./assets/mythicCardBackground.png')";
     lastCardNode.style.backgroundImage = "";
     deckContainer.classList.remove('hidden');
 
