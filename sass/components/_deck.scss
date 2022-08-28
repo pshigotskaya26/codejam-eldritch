@@ -1,0 +1,72 @@
+.deck-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    min-width: 30%;
+    opacity: 1;
+}
+
+.deck-container.hidden {
+    opacity: 0;
+}
+
+.current-state {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stage-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stage__text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    color: $color-white;
+}
+
+.stage__text.active {
+    color: $color-yellow_light;
+}
+
+.dots-container {
+    display: flex;
+    gap: 15px;
+
+}
+
+.dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: $color-white;
+    font-weight: bold;
+    font-size: 23px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    &_green {
+        background-color: $color-green;
+    }
+    &_brown {
+        background-color: $color-brown;
+    }
+    &_blue {
+        background-color: $color-blue;
+    }
+}
+
+.card {
+    height: 190px;
+    width: 130px;
+    cursor: pointer;
+    background-size: cover;
+}
