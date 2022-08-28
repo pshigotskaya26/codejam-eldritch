@@ -520,4 +520,119 @@ difficultyContainer.addEventListener('click', (event) => {
     return resultArrayWithLevel;
 });
 
+//-----------------------------WHEN WE CLICK ON THE BUTTON 'SHUFFLE THE DECK'---------------------------
+
+const buttonDeck = document.querySelector('.button-deck');
+const lastCardNode = document.querySelector('.last-card');
+
+let resultArrayWithLevelCopy;
+let countsOfGreenCardsFirst;
+let countsOfBlueCardsFirst;
+let countsOfBrownCardsFirst;
+let countsOfGreenCardsSecond;
+let countsOfBlueCardsSecond;
+let countsOfBrownCardsSecond;
+let countsOfGreenCardsThird;
+let countsOfBlueCardsThird;
+let countsOfBrownCardsThird;
+let arrayOfCardsFirstStage;
+let arrayOfCardsSecondStage;
+let arrayOfCardsThirdStage;
+let generalArrayForStages;
+let sumOfElementsForFirstStage;
+let sumOfElementsForSecondStage;
+let sumOfElementsForThirdStage;
+let maxForFirstStage;
+let maxForSecondStage;
+let maxForThirdStage;
+
+//shuffle the cards
+const shuffleTheCards = (arr) => {
+    for (let i = arr.length - 1; i> 0; i--) {
+        let randomIndex = Math.floor(Math.random() * (i + 1));
+        let lastElement = arr[i];
+        arr[i] = arr[randomIndex];
+        arr[randomIndex] = lastElement;
+    }
+    return arr; 
+};
+
+
+//assign values to variables that wil be place in the dots
+const assignValuesToVariables = (id) => {
+    for (let i = 0; i < ancientsData.length; i++) {
+        if (ancientsData[i].id === id) {
+            countsOfGreenCardsFirst = ancientsData[i].firstStage.greenCards;
+            countsOfBlueCardsFirst = ancientsData[i].firstStage.blueCards;
+            countsOfBrownCardsFirst = ancientsData[i].firstStage.brownCards;
+
+            countsOfGreenCardsSecond = ancientsData[i].secondStage.greenCards;
+            countsOfBlueCardsSecond = ancientsData[i].secondStage.blueCards;
+            countsOfBrownCardsSecond = ancientsData[i].secondStage.brownCards;
+
+            countsOfGreenCardsThird = ancientsData[i].thirdStage.greenCards;
+            countsOfBlueCardsThird = ancientsData[i].thirdStage.blueCards;
+            countsOfBrownCardsThird = ancientsData[i].thirdStage.brownCards;
+
+            sumOfElementsForFirstStage = countsOfGreenCardsFirst + countsOfBlueCardsFirst + countsOfBrownCardsFirst;
+            sumOfElementsForSecondStage = countsOfGreenCardsSecond + countsOfBlueCardsSecond + countsOfBrownCardsSecond;
+            sumOfElementsForThirdStage = countsOfGreenCardsThird + countsOfBlueCardsThird + countsOfBrownCardsThird;
+
+            maxForFirstStage = sumOfElementsForFirstStage;
+            maxForSecondStage = sumOfElementsForFirstStage + sumOfElementsForSecondStage;
+            maxForThirdStage = sumOfElementsForFirstStage + sumOfElementsForSecondStage + sumOfElementsForThirdStage;
+        }
+    }
+};
+
+//choose cards from array for 1, 2, 3 stages
+const chooseCardsFromArray = (inputArray, countOfGreen, countOfBrown, counnOfBlue) => {
+    let resultArray;
+    let outputArray = [];
+    let greenCards = inputArray[0].splice(-countOfGreen, countOfGreen);
+    let brownCards = inputArray[1].splice(-countOfBrown, countOfBrown);
+    let blueCards = inputArray[2].splice(-counnOfBlue, counnOfBlue);
+    outputArray.push(...greenCards);
+    outputArray.push(...brownCards);
+    outputArray.push(...blueCards);
+    return outputArray;
+};
+
+//display values in the dots
+const displayValuesInTheDots = (green1, brown1, blue1, green2, brown2, blue2, green3, brown3, blue3) => {
+    const currentState = document.querySelector('.current-state');
+    let htmlCode = '';
+    htmlCode = `
+    <div class="stage-container stage-container_first">
+        <span class="stage__text">First stage</span>
+        <div class="dots-container">
+            <div class="dot dot_green">${green1}</div>
+            <div class="dot dot_brown">${brown1}</div>
+            <div class="dot dot_blue">${blue1}</div>
+        </div>
+    </div>
+    <div class="stage-container stage-container_second">
+        <span class="stage__text">Second stage</span>
+        <div class="dots-container">
+            <div class="dot dot_green">${green2}</div>
+            <div class="dot dot_brown">${brown2}</div>
+            <div class="dot dot_blue">${blue2}</div>
+        </div>
+    </div>
+    <div class="stage-container stage-container_third">
+        <span class="stage__text">Third stage</span>
+        <div class="dots-container">
+            <div class="dot dot_green">${green3}</div>
+            <div class="dot dot_brown">${brown3}</div>
+            <div class="dot dot_blue">${blue3}</div>
+        </div>
+    </div>
+    `;
+    currentState.innerHTML = htmlCode;
+};
+
+
+//display counts of cards in the dots container
+let baseCount;
+
 
