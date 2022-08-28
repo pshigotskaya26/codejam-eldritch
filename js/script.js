@@ -670,4 +670,151 @@ buttonDeck.addEventListener('click', function(event) {
 
 });
 
+//----------------------------WHEN WE CLICK DECKCARD----------------------------
+
+const greenFirstNode = document.querySelector('.stage-container_first .dot_green');
+const brownFirstNode = document.querySelector('.stage-container_first .dot_brown');
+const blueFirstNode = document.querySelector('.stage-container_first .dot_blue');
+const greenSecondNode = document.querySelector('.stage-container_second .dot_green');
+const brownSecondNode = document.querySelector('.stage-container_second .dot_brown');
+const blueSecondNode = document.querySelector('.stage-container_second .dot_blue');
+const greenThirdNode = document.querySelector('.stage-container_third .dot_green');
+const brownThirdNode = document.querySelector('.stage-container_third .dot_brown');
+const blueThirdNode = document.querySelector('.stage-container_third .dot_blue');
+
+let lastCard;
+let urlOfLastCard;
+let countOfClicks;
+let countGreen1;
+let countBrown1;
+let countBlue1; 
+let countGreen2;
+let countBrown2;
+let countBlue2;
+let countGreen3;
+let countBrown3;
+let countBlue3;
+
+//find last card in array of the cards
+const findLastCard = (arrayOfCards) => {
+    return arrayOfCards[arrayOfCards.length - 1];
+};
+//display card inlast card
+const displayCard = (url) => {
+    lastCardNode.style.backgroundImage = `url(${url})`;
+};
+
+//delete last card from array
+const deleteLastCard = () => {
+    generalArrayForStages.pop();
+}
+
+//decrement counter
+const decrementCounter = (colorOflastCard, countOfGreen, countOfBrown, countOfBlue) => {
+    if (colorOflastCard === 'green') {
+        countOfGreen = countOfGreen - 1;
+        return countOfGreen;
+    }
+    else if (colorOflastCard === 'brown') {
+        countOfBrown = countOfBrown - 1;
+        return countOfBrown;
+    }
+    else if (colorOflastCard === 'blue') {
+        countOfBlue = countOfBlue - 1;
+        return countOfBlue;
+    }
+};
+
+let colorOflastCard;
+
+//when we click on deck-card
+deckCard.addEventListener('click', function() {
+    countGreen1 = +document.querySelector('.stage-container_first .dot_green').innerHTML;
+    countBrown1 = +document.querySelector('.stage-container_first .dot_brown').innerHTML;
+    countBlue1 = +document.querySelector('.stage-container_first .dot_blue').innerHTML;
+    countGreen2 = +document.querySelector('.stage-container_second .dot_green').innerHTML;
+    countBrown2 = +document.querySelector('.stage-container_second .dot_brown').innerHTML;
+    countBlue2 = +document.querySelector('.stage-container_second .dot_blue').innerHTML;
+    countGreen3 = +document.querySelector('.stage-container_third .dot_green').innerHTML;
+    countBrown3 = +document.querySelector('.stage-container_third .dot_brown').innerHTML;
+    countBlue3 = +document.querySelector('.stage-container_third .dot_blue').innerHTML;
+    countOfClicks++;
+
+    if (countOfClicks <= maxForFirstStage) {
+        lastCard = findLastCard(generalArrayForStages);
+        urlOfLastCard = lastCard.cardFace;
+        colorOflastCard = lastCard.color;
+
+        displayCard(urlOfLastCard);
+
+        if (lastCard.color === 'green') {
+            countGreen1 = decrementCounter(colorOflastCard, countGreen1, countBrown1, countBlue1);
+        }
+        else if (lastCard.color === 'brown') {
+            countBrown1 = decrementCounter(colorOflastCard, countGreen1, countBrown1, countBlue1);
+        }
+        else if (lastCard.color === 'blue') {
+            countBlue1 = decrementCounter(colorOflastCard, countGreen1, countBrown1, countBlue1);
+        }
+
+        displayValuesInTheDots(countGreen1, countBrown1, countBlue1, countGreen2, countBrown2, countBlue2, countGreen3, countBrown3, countBlue3);  
+        deleteLastCard(); 
+    }
+
+    else if (countOfClicks > maxForFirstStage && countOfClicks <= maxForSecondStage) {
+        lastCard = findLastCard(generalArrayForStages);
+        urlOfLastCard = lastCard.cardFace;
+        colorOflastCard = lastCard.color;
+
+        displayCard(urlOfLastCard);
+
+        if (lastCard.color === 'green') {
+            countGreen2 = decrementCounter(colorOflastCard, countGreen2, countBrown2, countBlue2);
+        }
+        else if (lastCard.color === 'brown') {
+            countBrown2 = decrementCounter(colorOflastCard, countGreen2, countBrown2, countBlue2);
+        }
+        else if (lastCard.color === 'blue') {
+            countBlue2 = decrementCounter(colorOflastCard, countGreen2, countBrown2, countBlue2);
+        }
+
+        displayValuesInTheDots(countGreen1, countBrown1, countBlue1, countGreen2, countBrown2, countBlue2, countGreen3, countBrown3, countBlue3); 
+        deleteLastCard();
+    }
+
+    else if (countOfClicks > maxForSecondStage && countOfClicks <= maxForThirdStage) {
+        lastCard = findLastCard(generalArrayForStages);
+        urlOfLastCard = lastCard.cardFace;
+        colorOflastCard = lastCard.color;
+
+        displayCard(urlOfLastCard);
+
+        if (lastCard.color === 'green') {
+            countGreen3 = decrementCounter(colorOflastCard, countGreen3, countBrown3, countBlue3);
+        }
+        else if (lastCard.color === 'brown') {
+            countBrown3 = decrementCounter(colorOflastCard, countGreen3, countBrown3, countBlue3);
+        }
+        else if (lastCard.color === 'blue') {
+            countBlue3 = decrementCounter(colorOflastCard, countGreen3, countBrown3, countBlue3);
+        }
+
+        displayValuesInTheDots(countGreen1, countBrown1, countBlue1, countGreen2, countBrown2, countBlue2, countGreen3, countBrown3, countBlue3); 
+        deleteLastCard();  
+    }
+
+    if (countGreen1 === 0 && countBrown1 === 0 && countBlue1 === 0) {
+        document.querySelector('.stage-container_first .stage__text').classList.add('active');
+    }
+    if (countGreen2 === 0 && countBrown2 === 0 && countBlue2 === 0) {
+        document.querySelector('.stage-container_second .stage__text').classList.add('active');
+    }
+    if (countGreen3 === 0 && countBrown3 === 0 && countBlue3 === 0) {
+        document.querySelector('.stage-container_third .stage__text').classList.add('active');
+    }
+    if (generalArrayForStages.length === 0) {
+        deckCard.style.backgroundImage = "";
+    }
+});
+
 
