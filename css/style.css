@@ -26,20 +26,12 @@ body {
   transition: 0.3s ease-out;
 }
 
-.button-container {
+.container {
+  max-width: 1800px;
+  height: 100vh;
+  margin: 0 auto;
   display: flex;
-  min-width: 15%;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-}
-
-.button-container.hidden {
-  opacity: 0;
-}
-
-.button-deck:hover {
-  cursor: pointer;
+  gap: 30px;
 }
 
 .ancients-container {
