@@ -58,3 +58,29 @@ const getCountOfBlueCardsFromAnciant = (idOfAncient) => {
         }
     }
 }
+
+//-------------------------WHEN WE CLICK ANCIENTS'S CONTAINER-------------------------------
+
+//when we click on ancient's image
+ancientsСontainer.addEventListener('click', (event) => {
+    buttonContainer.classList.add('hidden');
+
+    arrayOfDifficulties.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    deckContainer.classList.add('hidden');
+    targetElementAncientCard = event.target;
+    difficultyContainer.classList.remove('hidden');
+
+    ancientCard.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    event.target.classList.add('active');
+    idOfAncient = event.target.dataset.id;
+
+    countOfGreenCardsFromAnciant = getCountOfGreenCardsFromAnciant(event.target.dataset.id);
+    countOfBrownCardsFromAnciant = getCountOfBrownCardsFromAnciant(event.target.dataset.id);
+    countOfBlueCardsFromAnciant = getCountOfBlueCardsFromAnciant(event.target.dataset.id); 
+});
