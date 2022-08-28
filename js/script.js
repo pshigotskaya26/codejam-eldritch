@@ -84,3 +84,9 @@ ancientsСontainer.addEventListener('click', (event) => {
     countOfBrownCardsFromAnciant = getCountOfBrownCardsFromAnciant(event.target.dataset.id);
     countOfBlueCardsFromAnciant = getCountOfBlueCardsFromAnciant(event.target.dataset.id); 
 });
+
+//-----------------------------SET BACKGROUND-IMAGE TO DECKCARD---------------------------
+
+//set background-image to deckCard
+const deckCard = document.querySelector('.deck-card');
+deckCard.style.backgroundImage = "url('./../assets/mythicCardBackground.png')";
