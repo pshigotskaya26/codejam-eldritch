@@ -635,4 +635,39 @@ const displayValuesInTheDots = (green1, brown1, blue1, green2, brown2, blue2, gr
 //display counts of cards in the dots container
 let baseCount;
 
+//---------------------WHEN WE CLICK ON BUTTON DECK
+
+buttonDeck.addEventListener('click', function(event) {
+    baseCount = 0;
+    countOfClicks = baseCount;
+    
+    deckCard.style.backgroundImage = "url('./../assets/mythicCardBackground.png')";
+    lastCardNode.style.backgroundImage = "";
+    deckContainer.classList.remove('hidden');
+
+    resultArrayWithLevelCopy = resultArrayWithLevel.slice();
+
+    resultArrayWithLevelCopy.forEach(item => {
+        item = shuffleTheCards(item);
+    });
+
+    assignValuesToVariables(idOfAncient);
+    displayValuesInTheDots(countsOfGreenCardsFirst, countsOfBrownCardsFirst, countsOfBlueCardsFirst, countsOfGreenCardsSecond, countsOfBrownCardsSecond, countsOfBlueCardsSecond, countsOfGreenCardsThird, countsOfBrownCardsThird, countsOfBlueCardsThird);
+
+    arrayOfCardsFirstStage = chooseCardsFromArray(resultArrayWithLevelCopy, countsOfGreenCardsFirst, countsOfBrownCardsFirst, countsOfBlueCardsFirst);
+    arrayOfCardsSecondStage = chooseCardsFromArray(resultArrayWithLevelCopy, countsOfGreenCardsSecond, countsOfBrownCardsSecond, countsOfBlueCardsSecond);
+    arrayOfCardsThirdStage = chooseCardsFromArray(resultArrayWithLevelCopy, countsOfGreenCardsThird, countsOfBrownCardsThird, countsOfBlueCardsThird);
+
+    shuffleTheCards(arrayOfCardsFirstStage);
+    shuffleTheCards(arrayOfCardsSecondStage);
+    shuffleTheCards(arrayOfCardsThirdStage);
+
+    generalArrayForStages = [];
+    generalArrayForStages.unshift(...arrayOfCardsFirstStage);
+    generalArrayForStages.unshift(...arrayOfCardsSecondStage);
+    generalArrayForStages.unshift(...arrayOfCardsThirdStage); 
+    buttonContainer.classList.add('hidden');
+
+});
+
 
