@@ -1,0 +1,32 @@
+.difficulty-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    opacity: 1;
+}
+
+.difficulty-container.hidden {
+    opacity: 0;
+    transition: 0.3s ease-out;
+}
+
+.difficulty {
+    padding: 15px;
+    background-color: $color-red;
+    color: $color-white;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.difficulty.active {
+    border: 1px solid $color-green;
+    background-color: $color-red_light;
+}
+
+.difficulty:hover {
+    background-color: $color-red_light;
+    transition: 0.3s ease-out;
+}

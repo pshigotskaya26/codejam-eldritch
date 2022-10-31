@@ -1,0 +1,20 @@
+{
+  "name": "codejam-eldritch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "style": "sass --watch sass/style.scss css/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pshigotskaya26/codejam-eldritch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pshigotskaya26/codejam-eldritch/issues"
+  },
+  "homepage": "https://github.com/pshigotskaya26/codejam-eldritch#readme"
+}

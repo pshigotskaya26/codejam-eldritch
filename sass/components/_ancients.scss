@@ -1,0 +1,23 @@
+.ancients-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 33%;
+   
+}
+
+.ancient-card {
+    width: 266px;
+    height: 344px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.ancient-card.active {
+    border: 1px solid $color-green;
+}
+

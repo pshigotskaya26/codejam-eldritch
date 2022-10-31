@@ -1,0 +1,12 @@
+.button-deck {
+    padding: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    color: $color-white;
+    background-color: $color-yellow;
+}
+
+.button-deck:hover {
+    background-color: $color-yellow_light;
+    transition: 0.3s ease-out;
+}
