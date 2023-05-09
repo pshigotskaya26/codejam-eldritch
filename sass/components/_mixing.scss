@@ -1,0 +1,15 @@
+.button-container {
+    display: flex;
+    min-width: 15%;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.button-container.hidden {
+    opacity: 0;
+}
+
+.button-deck:hover {
+    cursor: pointer;
+}

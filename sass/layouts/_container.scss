@@ -1,0 +1,7 @@
+.container {
+    max-width: $container-width;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+}
